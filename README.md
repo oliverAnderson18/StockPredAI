@@ -1,0 +1,1 @@
+We will create an AI to predicte futuro stock and crypto prices. 
