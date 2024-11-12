@@ -25,7 +25,6 @@ class Driver:
         acceptCookies.click()
 
     def search_for_asset(self, asset: Asset) -> None:
-
         searchBar = self.driver.find_element(By.ID, "ybar-sbq")
         searchBar.click()
 
@@ -34,3 +33,18 @@ class Driver:
         searchBar.send_keys(asset.ticker)
         searchBar.send_keys(Keys.ENTER)
 
+    def search_historical_data(self, asset: Asset) -> None:
+        historicalData = self.driver.find_element(By.XPATH,
+                                                  "/html/body/div[2]/main/section/section/aside/section/nav/ul/li[5]/a/span")
+        historicalData.click()
+
+        # Now we will click how long back we want to track
+
+        datesButton = self.driver.find_element(By.XPATH,
+                                               "/html/body/div[2]/main/section/section/section/article/div[1]/div[1]/div[1]/button/span")
+        datesButton.click()
+
+        # And we choose how far back we want to track
+
+        date = self.driver.find_element(By.CSS_SELECTOR, "button[value='" + asset.time + "']")
+        date.click()

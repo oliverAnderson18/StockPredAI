@@ -1,11 +1,10 @@
 from classes.driver import Driver
-from classes.asset import Asset
+from userInput import asset
+import time
 
 driver = Driver("https://finance.yahoo.com/")
 
-
-asset = Asset("BITCOIN", "BTC-USD", 5)
-
 driver.accept_cookies()
 driver.search_for_asset(asset)
-
+time.sleep(5)
+driver.search_historical_data(asset)
